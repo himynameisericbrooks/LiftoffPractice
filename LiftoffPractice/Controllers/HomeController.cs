@@ -18,10 +18,35 @@ namespace LiftoffPractice.Controllers
             _logger = logger;
         }
 
+
+
+        static private List<Material> Materials = new List<Material>();
+
+        // GET: /controller/
+        [HttpGet]
         public IActionResult Index()
+        {
+            ViewBag.materials = Materials;
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        [Route("/Home/Create")]
+        public IActionResult NewMaterial(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
+        {
+            Materials.Add(new Material(name, artistComposer, keyCenter, tempo, timeSig, description, mastery));
+
+            return Redirect("/Home");
+        }
+
+
+
 
         public IActionResult Privacy()
         {

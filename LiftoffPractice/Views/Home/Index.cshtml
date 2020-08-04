@@ -1,8 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<h1>Hello World</h1>
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Practice Home</h1>
+
+<h2>Practice Materials</h2>
+
+<p>
+    <a asp-controller="Home" asp-action="Create">Create Material</a>
+</p>
+
+@if (ViewBag.materials.Count == 0)
+{
+    <p> No materials created yet</p>
+}
+else
+{
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Artist/Composer
+        </th>
+        <th>
+            Key
+        </th>
+        <th>
+            Tempo
+        </th>
+        <th>
+            Time Signature
+        </th>
+    </tr>
+    @foreach (var material in ViewBag.Materials)
+    {
+        <tr>
+            <td>@material.Name</td>
+            <td>@material.ArtistComposer</td>
+            <td>@material.KeyCenter</td>
+            <td>@material.Tempo</td>
+            <td>@material.TimeSig</td>
+        </tr>
+    }
+</table>
+
+}
