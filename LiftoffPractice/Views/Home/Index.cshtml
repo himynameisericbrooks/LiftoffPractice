@@ -15,35 +15,49 @@
 }
 else
 {
-
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Artist/Composer
-        </th>
-        <th>
-            Key
-        </th>
-        <th>
-            Tempo
-        </th>
-        <th>
-            Time Signature
-        </th>
-    </tr>
-    @foreach (var material in ViewBag.Materials)
-    {
+<div class="index-table-all">
+    <table class="table index-table" id="index-table">
         <tr>
-            <td>@material.Name</td>
-            <td>@material.ArtistComposer</td>
-            <td>@material.KeyCenter</td>
-            <td>@material.Tempo</td>
-            <td>@material.TimeSig</td>
+            <th>
+                Name
+            </th>
+            <th>
+                Artist/Composer
+            </th>
+            <th>
+                Key
+            </th>
         </tr>
-    }
-</table>
+        @foreach (var material in ViewBag.Materials)
+        {
+            <tr>
+                <td>@material.Name</td>
+                <td>@material.ArtistComposer</td>
+                <td>@material.KeyCenter</td>
+            </tr>
+        }
+    </table>
 
+    <div>
+        <form method="post" id="delete-column" class="delete-column">
+            <table class="table delete-column">
+                <tr>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+                @foreach (var material in ViewBag.materials)
+                {
+                    <tr>
+                        <td class="form-group">
+                            <input type="checkbox" name="materialIds" value="@material.Id" />
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            <input type="submit" value="Delete Selected Materials" class="btn btn-danger" />
+        </form>
+    </div>
+</div>
 }

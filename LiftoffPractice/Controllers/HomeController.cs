@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LiftoffPractice.Models;
+using LiftoffPractice.Data;
 
 namespace LiftoffPractice.Controllers
 {
@@ -20,13 +21,12 @@ namespace LiftoffPractice.Controllers
 
 
 
-        static private List<Material> Materials = new List<Material>();
 
         // GET: /controller/
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.materials = Materials;
+            ViewBag.materials = MaterialData.GetAll();
             return View();
         }
 
@@ -40,10 +40,28 @@ namespace LiftoffPractice.Controllers
         [Route("/Home/Create")]
         public IActionResult NewMaterial(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
         {
-            Materials.Add(new Material(name, artistComposer, keyCenter, tempo, timeSig, description, mastery));
+            MaterialData.Add(new Material(name, artistComposer, keyCenter, tempo, timeSig, description, mastery));
 
             return Redirect("/Home");
         }
+
+        public IActionResult Delete()
+        {
+            ViewBag.materials = MaterialData.GetAll();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int[] materialIds)
+        {
+            foreach (int materialId in materialIds)
+            {
+                MaterialData.Remove(materialId);
+            }
+
+            return Redirect("/Home");
+        }
+
 
 
 

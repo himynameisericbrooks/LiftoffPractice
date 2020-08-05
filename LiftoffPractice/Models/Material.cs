@@ -11,6 +11,9 @@ namespace LiftoffPractice.Models
         public string Description { get; set; }
         public int Mastery { get; set; }
 
+        public int Id { get; }
+        private static int nextId = 1;
+
         public Material(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
         {
             Name = name;
@@ -20,11 +23,24 @@ namespace LiftoffPractice.Models
             TimeSig = timeSig;
             Description = description;
             Mastery = mastery;
+            Id = nextId;
+            nextId++;
         }
 
         public override string ToString()
         {
             return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Material material &&
+                   Id == material.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
         }
     }
 }
