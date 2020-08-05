@@ -9,28 +9,30 @@ namespace LiftoffPractice.Data
         // store material
         private static Dictionary<int, Material> Materials = new Dictionary<int, Material>();
 
-        // add materials
-        public static void Add(Material newMaterial)
-        {
-            Materials.Add(newMaterial.Id, newMaterial);
-        }
-
+        // GetAll
         // retrieve the materials
         public static IEnumerable<Material> GetAll()
         {
             return Materials.Values;
         }
 
-        // retrieve a single material
-        public static Material GetById(int id)
+        // add materials
+        public static void Add(Material newMaterial)
         {
-            return Materials[id];
+            Materials.Add(newMaterial.Id, newMaterial);
         }
 
         // remove an material
         public static void Remove(int id)
         {
             Materials.Remove(id);
+        }
+
+        //GetById
+        // retrieve a single material
+        public static Material GetById(int id)
+        {
+            return Materials[id];
         }
     }
 }
