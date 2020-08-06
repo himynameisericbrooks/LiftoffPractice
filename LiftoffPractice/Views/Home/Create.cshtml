@@ -1,39 +1,51 @@
-﻿<h1>Add Material</h1>
+﻿@using LiftoffPractice.ViewModels
+@model CreateMaterialViewModel;
+
+
+<h1>Add Material</h1>
 
 <form method="post">
-    <label>
-        Name
-        <input name="name" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="Name">Name
+            <input asp-for="Name" />
+        </label>
+    </div>
     <br />
-    <label>
-        Artist/Composer
-        <input name="artistComposer" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="ArtistComposer">By
+            <input asp-for="ArtistComposer" />
+        </label>
+    </div>
     <br />
-    <label>
-        Key
-        <input name="keyCenter" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="KeyCenter">Key
+            <input asp-for="KeyCenter" />
+        </label>
+    </div>
     <br />
-    <label>
-        Tempo
-        <input name="tempo" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="Tempo">Tempo
+            <input asp-for="Tempo" />
+        </label>
+    </div>
     <br />
-    <label>
-        Time Signature
-        <input name="timeSig" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="TimeSig">Time Signature
+            <input asp-for="TimeSig" />
+        </label>
+    </div>
     <br />
-    <label>
-        Description
-        <input name="description" type="text" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="Description">Descrption
+            <input asp-for="Description" />
+        </label>
+    </div>
     <br />
-    <label>
-        Mastery
-        <input name="mastery" type="number" />
-    </label>
+    <div class="form-group" asp-controller="Home" asp-action="Create">
+        <label asp-for="Mastery">Mastery
+            <input asp-for="Mastery" />
+        </label>
+    </div>
+
     <input type="submit" value="Create Material" />
 </form>

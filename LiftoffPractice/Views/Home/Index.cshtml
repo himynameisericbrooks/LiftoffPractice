@@ -1,4 +1,10 @@
-﻿@{
+﻿@using LiftoffPractice.Models
+
+@model List<Material>
+
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <h1>Practice Home</h1>
@@ -8,8 +14,11 @@
 <p>
     <a asp-controller="Home" asp-action="Create">Create Material</a>
 </p>
+<p>
+    <a asp-controller="Home" asp-action="Delete">Delete Material</a>
+</p>
 
-@if (ViewBag.materials.Count == 0)
+@if (Model.Count == 0)
 {
     <p> No materials created yet</p>
 }
@@ -28,7 +37,7 @@ else
                 Key
             </th>
         </tr>
-        @foreach (var material in ViewBag.Materials)
+        @foreach (var material in Model)
         {
             <tr>
                 <td>@material.Name</td>
@@ -38,28 +47,18 @@ else
         }
     </table>
 
+    <form method="post">
+        @foreach (var material in Model)
+        {
+            <div class="form-group">
+                <label>
+                    <span>@material.Name</span>
+                    <input type="checkbox" name="materialIds" value="@material.Id" />
+                </label>
+            </div>
+        }
 
-    @*delete form*@
-    <div>
-        <form method="post" id="delete-column" class="delete-column">
-            <table>
-                <tr>
-                    <th>
-                        Delete
-                    </th>
-                </tr>
-                @foreach (var material in ViewBag.materials)
-                {
-                    <tr>
-                        <td class="form-group">
-                            <input type="checkbox" name="materialIds" value="@material.Id" />
-                        </td>
-                    </tr>
-                }
-            </table>
-
-            <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" />
-        </form>
-    </div>
+        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" />
+    </form>
 </div>
 }

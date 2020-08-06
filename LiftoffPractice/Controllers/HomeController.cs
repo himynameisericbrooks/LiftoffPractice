@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LiftoffPractice.Models;
 using LiftoffPractice.Data;
+using LiftoffPractice.ViewModels;
 
 namespace LiftoffPractice.Controllers
 {
@@ -26,21 +27,31 @@ namespace LiftoffPractice.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.materials = MaterialData.GetAll();
-            return View();
+            List<Material> materials = new List<Material>(MaterialData.GetAll());
+            return View(materials);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            CreateMaterialViewModel createMaterialViewModel = new CreateMaterialViewModel();
+            return View(createMaterialViewModel);
         }
 
         [HttpPost]
-        [Route("/Home/Create")]
-        public IActionResult NewMaterial(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
+        public IActionResult Create(CreateMaterialViewModel createMaterialViewModel)
         {
-            MaterialData.Add(new Material(name, artistComposer, keyCenter, tempo, timeSig, description, mastery));
+            Material newMaterial = new Material
+            {
+                Name = createMaterialViewModel.Name,
+                ArtistComposer = createMaterialViewModel.ArtistComposer,
+                KeyCenter = createMaterialViewModel.KeyCenter,
+                Tempo = createMaterialViewModel.Tempo,
+                TimeSig = createMaterialViewModel.TimeSig,
+                Description = createMaterialViewModel.Description,
+                Mastery = createMaterialViewModel.Mastery
+            };
+            MaterialData.Add(newMaterial);
 
             return Redirect("/Home");
         }
@@ -61,6 +72,7 @@ namespace LiftoffPractice.Controllers
 
             return Redirect("/Home");
         }
+
 
 
 

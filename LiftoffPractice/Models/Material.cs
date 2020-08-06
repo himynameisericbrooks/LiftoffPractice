@@ -14,7 +14,13 @@ namespace LiftoffPractice.Models
         public int Id { get; }
         private static int nextId = 1;
 
-        public Material(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
+        public Material()
+        {
+            Id = nextId;
+            nextId++;
+        }
+
+        public Material(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery): this()
         {
             Name = name;
             ArtistComposer = artistComposer;
@@ -23,8 +29,6 @@ namespace LiftoffPractice.Models
             TimeSig = timeSig;
             Description = description;
             Mastery = mastery;
-            Id = nextId;
-            nextId++;
         }
 
         public override string ToString()
