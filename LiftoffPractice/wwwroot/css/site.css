@@ -83,3 +83,12 @@ body {
 .delete-column {
     width: 20%;
 }
+
+.field-validation-error {
+    color: red;
+    font-size: 11px;
+}
+
+.description-text {
+    /*use this to fix the description box in the add material page*/
+}

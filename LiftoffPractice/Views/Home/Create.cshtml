@@ -8,42 +8,49 @@
     <div class="form-group" asp-controller="Home" asp-action="Create">
         <label asp-for="Name">Name
             <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="ArtistComposer">By
+        <label asp-for="ArtistComposer">
+            By
             <input asp-for="ArtistComposer" />
+            <span asp-validation-for="ArtistComposer"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="KeyCenter">Key
+        <label asp-for="KeyCenter">
+            Key
             <input asp-for="KeyCenter" />
+            <span asp-validation-for="KeyCenter"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="Tempo">Tempo
+        <label asp-for="Tempo">
+            Tempo
             <input asp-for="Tempo" />
+            <span asp-validation-for="Tempo"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="TimeSig">Time Signature
+        <label asp-for="TimeSig">
+            Time Signature
             <input asp-for="TimeSig" />
+            <span asp-validation-for="TimeSig"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="Description">Descrption
-            <input asp-for="Description" />
+        <label asp-for="Description">
+            Descrption
+            <input asp-for="Description" class="description-text"/>
+            <span asp-validation-for="Description"></span>
         </label>
     </div>
-    <br />
     <div class="form-group" asp-controller="Home" asp-action="Create">
-        <label asp-for="Mastery">Mastery
+        <label asp-for="Mastery">
+            Mastery
             <input asp-for="Mastery" />
+            <span asp-validation-for="Mastery"></span>
         </label>
     </div>
 

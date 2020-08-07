@@ -8,26 +8,34 @@ using Microsoft.Extensions.Logging;
 using LiftoffPractice.Models;
 using LiftoffPractice.Data;
 using LiftoffPractice.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiftoffPractice.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private MaterialDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(MaterialDbContext dbContext)
         {
-            _logger = logger;
+            context = dbContext;
         }
 
 
+
+        //private readonly ILogger<HomeController> _logger;
+
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
 
         // GET: /controller/
         [HttpGet]
         public IActionResult Index()
         {
-            List<Material> materials = new List<Material>(MaterialData.GetAll());
+            List<Material> materials = context.Materials.ToList();
             return View(materials);
         }
 
@@ -41,24 +49,30 @@ namespace LiftoffPractice.Controllers
         [HttpPost]
         public IActionResult Create(CreateMaterialViewModel createMaterialViewModel)
         {
-            Material newMaterial = new Material
+            if (ModelState.IsValid)
             {
-                Name = createMaterialViewModel.Name,
-                ArtistComposer = createMaterialViewModel.ArtistComposer,
-                KeyCenter = createMaterialViewModel.KeyCenter,
-                Tempo = createMaterialViewModel.Tempo,
-                TimeSig = createMaterialViewModel.TimeSig,
-                Description = createMaterialViewModel.Description,
-                Mastery = createMaterialViewModel.Mastery
-            };
-            MaterialData.Add(newMaterial);
+                Material newMaterial = new Material
+                {
+                    Name = createMaterialViewModel.Name,
+                    ArtistComposer = createMaterialViewModel.ArtistComposer,
+                    KeyCenter = createMaterialViewModel.KeyCenter,
+                    Tempo = createMaterialViewModel.Tempo,
+                    TimeSig = createMaterialViewModel.TimeSig,
+                    Description = createMaterialViewModel.Description,
+                    Mastery = createMaterialViewModel.Mastery
+                };
+                context.Materials.Add(newMaterial);
+                context.SaveChanges();
 
-            return Redirect("/Home");
+                return Redirect("/Home");
+            }
+
+            return View(createMaterialViewModel);
         }
 
         public IActionResult Delete()
         {
-            ViewBag.materials = MaterialData.GetAll();
+            ViewBag.materials = context.Materials.ToList();
             return View();
         }
 
@@ -67,11 +81,30 @@ namespace LiftoffPractice.Controllers
         {
             foreach (int materialId in materialIds)
             {
-                MaterialData.Remove(materialId);
+                Material theMaterial = context.Materials.Find(materialId);
+                context.Materials.Remove(theMaterial);
             }
+
+            context.SaveChanges();
 
             return Redirect("/Home");
         }
+
+        public IActionResult Detail(int id)
+        {
+            Material theMaterial = context.Materials
+                .Single(m => m.Id == id);
+
+            List<MaterialTag> materialTags = context.MaterialTags
+                .Where(mt => mt.MaterialId == id)
+                .Include(mt => mt.Tag)
+                .ToList();
+
+            MaterialDetailViewModel viewModel = new MaterialDetailViewModel(theMaterial, materialTags);
+            return View(viewModel);
+        }
+
+
 
 
 

@@ -11,16 +11,13 @@ namespace LiftoffPractice.Models
         public string Description { get; set; }
         public int Mastery { get; set; }
 
-        public int Id { get; }
-        private static int nextId = 1;
+        public int Id { get; set; }
 
         public Material()
         {
-            Id = nextId;
-            nextId++;
         }
 
-        public Material(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery): this()
+        public Material(string name, string artistComposer, string keyCenter, string tempo, string timeSig, string description, int mastery)
         {
             Name = name;
             ArtistComposer = artistComposer;

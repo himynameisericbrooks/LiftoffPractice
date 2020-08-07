@@ -1,0 +1,18 @@
+﻿@model List<LiftoffPractice.Models.MaterialTag>
+
+@if (Model.Count == 0)
+{
+    <h1>No elements with the given tags</h1>
+}
+else
+{
+    <h1>Materials Tagged: @Model[0].Tag.Name</h1>
+
+    <ul>
+        @foreach (var materialTag in Model)
+        {
+            <li><a asp-controller="Home" asp-action="Detail" asp-route-id="@materialTag.MaterialId">@materialTag.Material.Name</a></li>
+        }
+    </ul>
+
+}

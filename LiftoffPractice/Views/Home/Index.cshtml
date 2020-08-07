@@ -40,13 +40,15 @@ else
         @foreach (var material in Model)
         {
             <tr>
-                <td>@material.Name</td>
+                <td><a asp-controller="Home" asp-action="Detail" asp-route-id="@material.Id">@material.Name</a></td>
                 <td>@material.ArtistComposer</td>
                 <td>@material.KeyCenter</td>
             </tr>
         }
     </table>
 
+
+    @*get this to work as a table in refactoring and remove delete page*@
     <form method="post">
         @foreach (var material in Model)
         {

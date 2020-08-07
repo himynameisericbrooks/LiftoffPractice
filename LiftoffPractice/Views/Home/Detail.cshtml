@@ -1,0 +1,37 @@
+﻿@model LiftoffPractice.ViewModels.MaterialDetailViewModel
+
+<h1>@Model.Name</h1>
+
+<table class="table">
+    <tr>
+        <th>By</th>
+        <td>@Model.ArtistComposer</td>
+    </tr>
+    <tr>
+        <th>Key</th>
+        <td>@Model.KeyCenter</td>
+    </tr>
+    <tr>
+        <th>Tempo</th>
+        <td>@Model.Tempo</td>
+    </tr>
+    <tr>
+        <th>Time Signature</th>
+        <td>@Model.TimeSig</td>
+    </tr>
+    <tr>
+        <th>Mastery</th>
+        <td>@Model.Mastery</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Tags</th>
+        <td>@Model.TagText</td>
+    </tr>
+
+</table>
+
+<a asp-controller="Tag" asp-action="AddMaterial" asp-route-id="@Model.MaterialId">Add Tag</a>

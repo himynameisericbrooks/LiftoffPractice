@@ -1,0 +1,13 @@
+﻿@model LiftoffPractice.ViewModels.AddMaterialTagViewModel
+
+<h1>Add Tag to Material: @Model.Material.Name</h1>
+
+<form asp-controller="Tag" asp-action="AddMaterial" method="post">
+    <input type="hidden" value="@Model.Material.Id" name="MaterialId" />
+    <div class="form-group">
+        <label asp-for="TagId">Tag</label>
+        <select asp-for="TagId" asp-items="Model.Tags"></select>
+        <span asp-validation-for="TagId"></span>
+    </div>
+    <input type="submit" value="Add Tag" />
+</form>
