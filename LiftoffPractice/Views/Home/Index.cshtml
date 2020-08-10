@@ -48,19 +48,31 @@ else
     </table>
 
 
-    @*get this to work as a table in refactoring and remove delete page*@
-    <form method="post">
-        @foreach (var material in ViewBag.Materials)
-        {
-            <div class="form-group">
-                <label>
-                    <span>@material.Name</span>
-                    <input type="checkbox" name="materialIds" value="@material.Id"/>
-                </label>
-            </div>
-        }
 
-        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" asp-controller="Home" asp-action="Delete"/>
+
+    @*Delete Column Form*@
+    <form method="post">
+        <table class="table index-table">
+            <tr>
+                <th>
+                    Delete
+                </th>
+            </tr>
+
+
+
+            @foreach (var material in ViewBag.Materials)
+            {
+                <tr class="form-group">
+                    <td>
+                        <input type="checkbox" name="materialIds" value="@material.Id" />
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" asp-controller="Home" asp-action="Delete" onclick="return confirm('Are you sure?')"/>
     </form>
 </div>
 }
