@@ -6,6 +6,7 @@ using LiftoffPractice.Data;
 using LiftoffPractice.Models;
 using LiftoffPractice.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,13 @@ namespace LiftoffPractice.Controllers
     public class TagController : Controller
     {
         private MaterialDbContext context;
+        //private readonly UserManager<IdentityUser> _userManager;
 
+        //public TagController(MaterialDbContext dbContext, UserManager<IdentityUser> userManager)
+        //{
+        //    context = dbContext;
+        //    _userManager = userManager;
+        //}
         public TagController(MaterialDbContext dbContext)
         {
             context = dbContext;
@@ -26,7 +33,11 @@ namespace LiftoffPractice.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Tag> tags = context.Tags.ToList();
+            //var userId = _userManager.GetUserId(User);
+
+            List<Tag> tags = context.Tags
+                //.Where(m => m.UserId == userId)
+                .ToList();
             return View(tags);
         }
 
@@ -41,6 +52,12 @@ namespace LiftoffPractice.Controllers
         {
             if (ModelState.IsValid)
             {
+                //var userId = _userManager.GetUserId(User);
+                //Tag newTag = new Tag
+                //{
+                //    UserId = userId
+                //};
+
                 context.Tags.Add(tag);
                 context.SaveChanges();
                 return Redirect("/Tag/");

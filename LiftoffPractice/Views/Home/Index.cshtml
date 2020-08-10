@@ -55,12 +55,12 @@ else
             <div class="form-group">
                 <label>
                     <span>@material.Name</span>
-                    <input type="checkbox" name="materialIds" value="@material.Id" />
+                    <input type="checkbox" name="materialIds" value="@material.Id"/>
                 </label>
             </div>
         }
 
-        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" />
+        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" asp-controller="Home" asp-action="Delete"/>
     </form>
 </div>
 }

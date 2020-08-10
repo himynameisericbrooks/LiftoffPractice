@@ -9,7 +9,7 @@ namespace LiftoffPractice.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
+        [StringLength(30, MinimumLength = 1, ErrorMessage = "Name must be between 1 and 30 characters")]
         public string Name { get; set; }
 
         public Tag(string name)
