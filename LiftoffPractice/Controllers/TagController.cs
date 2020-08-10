@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LiftoffPractice.Data;
 using LiftoffPractice.Models;
 using LiftoffPractice.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LiftoffPractice.Controllers
 {
+    [Authorize]
     public class TagController : Controller
     {
         private MaterialDbContext context;

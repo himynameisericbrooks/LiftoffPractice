@@ -9,16 +9,21 @@ using LiftoffPractice.Models;
 using LiftoffPractice.Data;
 using LiftoffPractice.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace LiftoffPractice.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private MaterialDbContext context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(MaterialDbContext dbContext)
+        public HomeController(MaterialDbContext dbContext, UserManager<IdentityUser> userManager)
         {
             context = dbContext;
+            _userManager = userManager;
         }
 
 
@@ -32,11 +37,14 @@ namespace LiftoffPractice.Controllers
 
 
         // GET: /controller/
-        [HttpGet]
+        [HttpGet, HttpPost]
         public IActionResult Index()
         {
-            List<Material> materials = context.Materials.ToList();
-            return View(materials);
+            var userId = _userManager.GetUserId(User);
+            ViewBag.materials = context.Materials
+                .Where(m => m.UserId == userId)
+                .ToList();
+            return View();
         }
 
         [HttpGet]
@@ -51,6 +59,8 @@ namespace LiftoffPractice.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = _userManager.GetUserId(User);
+
                 Material newMaterial = new Material
                 {
                     Name = createMaterialViewModel.Name,
@@ -59,7 +69,8 @@ namespace LiftoffPractice.Controllers
                     Tempo = createMaterialViewModel.Tempo,
                     TimeSig = createMaterialViewModel.TimeSig,
                     Description = createMaterialViewModel.Description,
-                    Mastery = createMaterialViewModel.Mastery
+                    Mastery = createMaterialViewModel.Mastery,
+                    UserId = userId
                 };
                 context.Materials.Add(newMaterial);
                 context.SaveChanges();

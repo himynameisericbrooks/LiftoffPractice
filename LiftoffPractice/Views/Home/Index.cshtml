@@ -18,7 +18,7 @@
     <a asp-controller="Home" asp-action="Delete">Delete Material</a>
 </p>
 
-@if (Model.Count == 0)
+@if (ViewBag.Materials.Count == 0)
 {
     <p> No materials created yet</p>
 }
@@ -37,7 +37,7 @@ else
                 Key
             </th>
         </tr>
-        @foreach (var material in Model)
+        @foreach (var material in ViewBag.Materials)
         {
             <tr>
                 <td><a asp-controller="Home" asp-action="Detail" asp-route-id="@material.Id">@material.Name</a></td>
@@ -50,7 +50,7 @@ else
 
     @*get this to work as a table in refactoring and remove delete page*@
     <form method="post">
-        @foreach (var material in Model)
+        @foreach (var material in ViewBag.Materials)
         {
             <div class="form-group">
                 <label>

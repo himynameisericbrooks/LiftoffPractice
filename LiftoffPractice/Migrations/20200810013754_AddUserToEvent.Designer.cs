@@ -3,14 +3,16 @@ using System;
 using LiftoffPractice.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LiftoffPractice.Migrations
 {
     [DbContext(typeof(MaterialDbContext))]
-    partial class MaterialDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200810013754_AddUserToEvent")]
+    partial class AddUserToEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

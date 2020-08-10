@@ -3,6 +3,7 @@ namespace LiftoffPractice.Models
 {
     public class Material
     {
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string ArtistComposer { get; set; }
         public string KeyCenter { get; set; }

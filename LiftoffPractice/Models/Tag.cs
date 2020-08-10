@@ -5,6 +5,7 @@ namespace LiftoffPractice.Models
 {
     public class Tag
     {
+        //public string UserId { get; set; }
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
