@@ -115,6 +115,47 @@ namespace LiftoffPractice.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Edit(int id)
+        {
+            Material theMaterial = context.Materials
+                .Single(m => m.Id == id);
+
+            List<MaterialTag> materialTags = context.MaterialTags
+                .Where(mt => mt.MaterialId == id)
+                .Include(mt => mt.Tag)
+                .ToList();
+
+            EditMaterialViewModel viewModel = new EditMaterialViewModel(theMaterial, materialTags);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditMaterialViewModel editMaterialViewModel)
+        {
+            {
+                if (ModelState.IsValid)
+                {
+
+                    Material updateMaterial = new Material
+                    {
+                        Name = editMaterialViewModel.Name,
+                        ArtistComposer = editMaterialViewModel.ArtistComposer,
+                        KeyCenter = editMaterialViewModel.KeyCenter,
+                        Tempo = editMaterialViewModel.Tempo,
+                        TimeSig = editMaterialViewModel.TimeSig,
+                        Description = editMaterialViewModel.Description,
+                        Mastery = editMaterialViewModel.Mastery,
+                    };
+                    context.Materials.Update(updateMaterial);
+                    context.SaveChanges();
+
+                    return Redirect("/Home");
+                }
+
+                return View(editMaterialViewModel);
+            }
+        }
+
 
 
 

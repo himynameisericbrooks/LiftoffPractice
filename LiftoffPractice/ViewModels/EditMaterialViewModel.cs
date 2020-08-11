@@ -55,5 +55,9 @@ namespace LiftoffPractice.ViewModels
                 }
             }
         }
+
+        //public EditMaterialTagViewModel()
+        //{
+        //}
     }
 }
