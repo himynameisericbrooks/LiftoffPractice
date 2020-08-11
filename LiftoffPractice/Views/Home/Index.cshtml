@@ -14,9 +14,6 @@
 <p>
     <a asp-controller="Home" asp-action="Create">Create Material</a>
 </p>
-<p>
-    <a asp-controller="Home" asp-action="Delete">Delete Material</a>
-</p>
 
 @if (ViewBag.Materials.Count == 0)
 {
@@ -72,7 +69,7 @@ else
 
 
         </table>
-        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" asp-controller="Home" asp-action="Delete" onclick="return confirm('Are you sure?')"/>
+        <input type="submit" name="Delete Selected Materials" value="Delete Selected Materials" class="btn btn-danger" asp-controller="Home" asp-action="Delete" onclick="return confirm('Are you sure you want to delete selected item(s)?')"/>
     </form>
 </div>
 }

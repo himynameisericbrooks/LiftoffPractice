@@ -1,0 +1,98 @@
+﻿@using LiftoffPractice.ViewModels
+@model LiftoffPractice.ViewModels.EditMaterialViewModel
+
+<h1>@Model.Name</h1>
+
+
+<form>
+</form>
+
+
+<h1>Add Material</h1>
+
+<form method="post">
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="Name">
+            Name
+            <input asp-for="Name" value="@Model.Name" />
+            <span asp-validation-for="Name"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="ArtistComposer">
+            By
+            <input asp-for="ArtistComposer" value="@Model.ArtistComposer" />
+            <span asp-validation-for="ArtistComposer"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="KeyCenter">
+            Key
+            <input asp-for="KeyCenter" value="@Model.KeyCenter" />
+            <span asp-validation-for="KeyCenter"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="Tempo">
+            Tempo
+            <input asp-for="Tempo" value="@Model.Tempo" />
+            <span asp-validation-for="Tempo"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="TimeSig">
+            Time Signature
+            <input asp-for="TimeSig" value="@Model.TimeSig" />
+            <span asp-validation-for="TimeSig"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="Description">
+            Descrption
+            <input asp-for="Description" class="description-text" value="@Model.Description" />
+            <span asp-validation-for="Description"></span>
+        </label>
+    </div>
+    <div class="form-group" asp-controller="Home" asp-action="Edit">
+        <label asp-for="Mastery">
+            Mastery
+            <input asp-for="Mastery" value="@Model.Mastery" />
+            <span asp-validation-for="Mastery"></span>
+        </label>
+    </div>
+
+    <input type="submit" value="Create Material" />
+</form>
+
+
+@*<table class="table">
+        <tr>
+            <th>By</th>
+            <td>@Model.ArtistComposer</td>
+        </tr>
+        <tr>
+            <th>Key</th>
+            <td>@Model.KeyCenter</td>
+        </tr>
+        <tr>
+            <th>Tempo</th>
+            <td>@Model.Tempo</td>
+        </tr>
+        <tr>
+            <th>Time Signature</th>
+            <td>@Model.TimeSig</td>
+        </tr>
+        <tr>
+            <th>Mastery</th>
+            <td>@Model.Mastery</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <th>Tags</th>
+            <td>@Model.TagText</td>
+        </tr>
+
+    </table>*@
