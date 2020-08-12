@@ -14,6 +14,7 @@ namespace LiftoffPractice.ViewModels
         [StringLength(25, MinimumLength = 1, ErrorMessage = "Name must be 1-25 characters")]
         public string Name { get; set; }
         [StringLength(20, ErrorMessage = "The Artist/Composer must be 20 characters or less")]
+
         public string ArtistComposer { get; set; }
 
         [StringLength(20, ErrorMessage = "The key must be 20 characters or less")]
@@ -56,8 +57,8 @@ namespace LiftoffPractice.ViewModels
             }
         }
 
-        //public EditMaterialTagViewModel()
-        //{
-        //}
+        public EditMaterialViewModel()
+        {
+        }
     }
 }

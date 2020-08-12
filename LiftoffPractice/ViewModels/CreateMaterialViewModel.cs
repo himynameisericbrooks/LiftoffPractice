@@ -23,7 +23,7 @@ namespace LiftoffPractice.ViewModels
         [StringLength(500, ErrorMessage = "Description must be 500 characters or less")]
         public string Description { get; set; }
 
-        [Range(0,10, ErrorMessage = "Mastery must be between 0 and 10")]
+        [Range(0, 10, ErrorMessage = "Mastery must be between 0 and 10")]
         public int Mastery { get; set; }
     }
 }
