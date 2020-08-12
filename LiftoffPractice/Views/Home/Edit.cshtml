@@ -7,49 +7,49 @@
 <h1>Edit Material</h1>
 
 <form method="post">
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="Name">
             Name
             <input asp-for="Name" value="@Model.Name" />
             <span asp-validation-for="Name"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="ArtistComposer">
             By
             <input asp-for="ArtistComposer" value="@Model.ArtistComposer" />
             <span asp-validation-for="ArtistComposer"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="KeyCenter">
             Key
             <input asp-for="KeyCenter" value="@Model.KeyCenter" />
             <span asp-validation-for="KeyCenter"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="Tempo">
             Tempo
             <input asp-for="Tempo" value="@Model.Tempo" />
             <span asp-validation-for="Tempo"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="TimeSig">
             Time Signature
             <input asp-for="TimeSig" value="@Model.TimeSig" />
             <span asp-validation-for="TimeSig"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="Description">
             Descrption
             <input asp-for="Description" class="description-text" value="@Model.Description" />
             <span asp-validation-for="Description"></span>
         </label>
     </div>
-    <div class="form-group" asp-controller="Home" asp-action="Edit">
+    <div class="form-group" asp-controller="Home" asp-action="EditPost">
         <label asp-for="Mastery">
             Mastery
             <input asp-for="Mastery" value="@Model.Mastery" />
@@ -57,7 +57,7 @@
         </label>
     </div>
 
-    <input type="submit" value="Save Changes" />
+    <input type="submit" value="Save Changes" asp-controller="Home" asp-action="EditPost"/>
 </form>
 
 
