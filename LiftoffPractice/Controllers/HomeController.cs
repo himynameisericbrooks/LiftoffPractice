@@ -162,10 +162,11 @@ namespace LiftoffPractice.Controllers
         {
             if (ModelState.IsValid)
             {
-                Material theMaterial = context.Materials.Find(id)
-                .Set(tm => tm.Name = editMaterialViewModel.Name);
-                                //.Where(mt => mt.MaterialId == id)
-                //.Set(theMaterial.Name = editMaterialViewModel.Name);
+                Material theMaterial = context.Materials.Find(id);
+                //.Set(tm => tm.Name = editMaterialViewModel.Name);
+                ////.Where(mt => mt.MaterialId == id)
+                ////.Set(theMaterial.Name = editMaterialViewModel.Name);
+                theMaterial.Name = editMaterialViewModel.Name;
 
 
                 context.Materials.Update(theMaterial);
