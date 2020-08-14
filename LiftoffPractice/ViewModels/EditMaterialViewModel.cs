@@ -13,14 +13,14 @@ namespace LiftoffPractice.ViewModels
         [Required(ErrorMessage = "Name is required")]
         [StringLength(25, MinimumLength = 1, ErrorMessage = "Name must be 1-25 characters")]
         public string Name { get; set; }
-        [StringLength(20, ErrorMessage = "The Artist/Composer must be 20 characters or less")]
 
+        [StringLength(20, ErrorMessage = "The Artist/Composer must be 20 characters or less")]
         public string ArtistComposer { get; set; }
 
         [StringLength(20, ErrorMessage = "The key must be 20 characters or less")]
         public string KeyCenter { get; set; }
 
-        [StringLength(15, ErrorMessage = "The tempo must be 15 characters or less")]
+        [StringLength(20, ErrorMessage = "The tempo must be 20 characters or less")]
         public string Tempo { get; set; }
 
         [StringLength(15, ErrorMessage = "The time signature must be 15 characters or less")]

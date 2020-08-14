@@ -14,7 +14,7 @@ namespace LiftoffPractice.ViewModels
         [StringLength(20, ErrorMessage = "The key must be 20 characters or less")]
         public string KeyCenter { get; set; }
 
-        [StringLength(15, ErrorMessage = "The tempo must be 15 characters or less")]
+        [StringLength(20, ErrorMessage = "The tempo must be 15 characters or less")]
         public string Tempo { get; set; }
 
         [StringLength(15, ErrorMessage = "The time signature must be 15 characters or less")]

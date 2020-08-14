@@ -167,7 +167,12 @@ namespace LiftoffPractice.Controllers
                 ////.Where(mt => mt.MaterialId == id)
                 ////.Set(theMaterial.Name = editMaterialViewModel.Name);
                 theMaterial.Name = editMaterialViewModel.Name;
-
+                theMaterial.ArtistComposer = editMaterialViewModel.ArtistComposer;
+                theMaterial.KeyCenter = editMaterialViewModel.KeyCenter;
+                theMaterial.Tempo = editMaterialViewModel.Tempo;
+                theMaterial.Description = editMaterialViewModel.Description;
+                theMaterial.Mastery = editMaterialViewModel.Mastery;
+                theMaterial.TimeSig = editMaterialViewModel.TimeSig;
 
                 context.Materials.Update(theMaterial);
                 context.SaveChanges();
@@ -175,7 +180,7 @@ namespace LiftoffPractice.Controllers
                 return Redirect("/Home");
             }
 
-            return View();
+            return View("Edit", editMaterialViewModel);
         }
 
 
