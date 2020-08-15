@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LiftoffPractice.Controllers
 {
@@ -18,25 +17,20 @@ namespace LiftoffPractice.Controllers
     public class TagController : Controller
     {
         private MaterialDbContext context;
-        //private readonly UserManager<IdentityUser> _userManager;
 
-        //public TagController(MaterialDbContext dbContext, UserManager<IdentityUser> userManager)
-        //{
-        //    context = dbContext;
-        //    _userManager = userManager;
-        //}
-        public TagController(MaterialDbContext dbContext)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public TagController(MaterialDbContext dbContext, UserManager<IdentityUser> userManager)
         {
             context = dbContext;
+            _userManager = userManager;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            //var userId = _userManager.GetUserId(User);
 
             List<Tag> tags = context.Tags
-                //.Where(m => m.UserId == userId)
                 .ToList();
             return View(tags);
         }
@@ -52,11 +46,8 @@ namespace LiftoffPractice.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var userId = _userManager.GetUserId(User);
-                //Tag newTag = new Tag
-                //{
-                //    UserId = userId
-                //};
+                var userId = _userManager.GetUserId(User);
+
 
                 context.Tags.Add(tag);
                 context.SaveChanges();

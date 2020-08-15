@@ -7,6 +7,7 @@ namespace LiftoffPractice.ViewModels
 {
     public class AddMaterialTagViewModel
     {
+        public string UserId { get; set; }
         public int MaterialId { get; set; }
         public Material Material { get; set; }
 

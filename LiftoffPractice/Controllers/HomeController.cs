@@ -27,15 +27,6 @@ namespace LiftoffPractice.Controllers
         }
 
 
-
-        //private readonly ILogger<HomeController> _logger;
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-
         // GET: /controller/
         [HttpGet, HttpPost]
         public IActionResult Index()
@@ -130,32 +121,6 @@ namespace LiftoffPractice.Controllers
             return View(viewModel);
         }
 
-        //[HttpPost]
-        //public IActionResult Edit(EditMaterialViewModel editMaterialViewModel)
-        //{
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-
-        //            Material updateMaterial = new Material
-        //            {
-        //                Name = editMaterialViewModel.Name,
-        //                ArtistComposer = editMaterialViewModel.ArtistComposer,
-        //                KeyCenter = editMaterialViewModel.KeyCenter,
-        //                Tempo = editMaterialViewModel.Tempo,
-        //                TimeSig = editMaterialViewModel.TimeSig,
-        //                Description = editMaterialViewModel.Description,
-        //                Mastery = editMaterialViewModel.Mastery
-        //            };
-        //            context.Materials.Update(updateMaterial);
-        //            context.SaveChanges();
-
-        //            return Redirect("/Home");
-        //        }
-
-        //        return View(editMaterialViewModel);
-        //    }
-        //}
 
         [HttpPost]
         public IActionResult EditPost(EditMaterialViewModel editMaterialViewModel, int id)
@@ -163,9 +128,6 @@ namespace LiftoffPractice.Controllers
             if (ModelState.IsValid)
             {
                 Material theMaterial = context.Materials.Find(id);
-                //.Set(tm => tm.Name = editMaterialViewModel.Name);
-                ////.Where(mt => mt.MaterialId == id)
-                ////.Set(theMaterial.Name = editMaterialViewModel.Name);
                 theMaterial.Name = editMaterialViewModel.Name;
                 theMaterial.ArtistComposer = editMaterialViewModel.ArtistComposer;
                 theMaterial.KeyCenter = editMaterialViewModel.KeyCenter;
