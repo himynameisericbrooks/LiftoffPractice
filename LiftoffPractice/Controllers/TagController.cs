@@ -48,7 +48,7 @@ namespace LiftoffPractice.Controllers
             {
                 var userId = _userManager.GetUserId(User);
 
-                tag
+                //tag viewmodel and new tag
                 context.Tags.Add(tag);
                 context.SaveChanges();
                 return Redirect("/Tag/");
