@@ -29,8 +29,10 @@ namespace LiftoffPractice.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            var userId = _userManager.GetUserId(User);
 
             List<Tag> tags = context.Tags
+                .Where(t => t.UserId == userId)
                 .ToList();
             return View(tags);
         }
@@ -49,6 +51,7 @@ namespace LiftoffPractice.Controllers
                 var userId = _userManager.GetUserId(User);
 
                 //tag viewmodel and new tag
+                tag.UserId = userId;
                 context.Tags.Add(tag);
                 context.SaveChanges();
                 return Redirect("/Tag/");
