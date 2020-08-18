@@ -62,8 +62,12 @@ namespace LiftoffPractice.Controllers
 
         public IActionResult AddMaterial(int id)
         {
+            var userId = _userManager.GetUserId(User);
+
             Material theMaterial = context.Materials.Find(id);
-            List<Tag> possibleTags = context.Tags.ToList();
+            List<Tag> possibleTags = context.Tags
+                .Where(t => t.UserId == userId)
+                .ToList();
 
             AddMaterialTagViewModel viewModel = new AddMaterialTagViewModel(theMaterial, possibleTags);
 
