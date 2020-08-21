@@ -99,3 +99,12 @@ body {
 .description-text {
     /*use this to fix the description box in the add material page*/
 }
+
+.profile-nav {
+    padding-left: 50px !important;
+    text-align: right !important;
+}
+
+.detail-add-tag-btn {
+    margin: 10px 0px;
+}
